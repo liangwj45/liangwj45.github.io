@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zn"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Wenjie Liang, 奥小文的加油站"><meta name="author" content="Wenjie Liang"><meta name="description" content="Unity3D精简版双人井字棋"><meta name="copyright" content="Wenjie Liang"><title>Unity3D精简版双人井字棋 | 奥小文的加油站</title><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/avatar.jpg?v=1.3.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/avatar.jpg?v=1.3.1" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.3.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  sidebar: {"offsetTop":"20px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"复制成功","copy_error":"复制失败","creative_commons":"知识共享","copy_button":"点击复制"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header"><div class="loading-bar"><div class="progress"></div></div><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><div class="menu-item"><a class="menu-item-inner" href="/"><i class="fa fa-home"></i>首页</a></div><div class="menu-item"><a class="menu-item-inner" href="/archives/"><i class="fa fa-folder-open"></i>归档</a></div><div class="menu-item"><a class="menu-item-inner" href="/categories/"><i class="fa fa-th"></i>分类</a></div><div class="menu-item"><a class="menu-item-inner" href="/tags/"><i class="fa fa-tags"></i>标签</a></div><div class="menu-item"><a class="menu-item-inner" href="/about/"><i class="fa fa-user"></i>关于</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">奥小文的加油站</div><div class="header-info-subtitle"></div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-overview">站点概览</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#项目目标"><span class="toc-number">1.</span> <span class="toc-text">项目目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏界面"><span class="toc-number">2.</span> <span class="toc-text">游戏界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#游戏思路"><span class="toc-number">3.</span> <span class="toc-text">游戏思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建棋盘"><span class="toc-number">3.1.</span> <span class="toc-text">创建棋盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建重置按钮"><span class="toc-number">3.2.</span> <span class="toc-text">创建重置按钮</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录下子情况"><span class="toc-number">3.3.</span> <span class="toc-text">记录下子情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断胜负情况"><span class="toc-number">3.4.</span> <span class="toc-text">判断胜负情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#打印对局情况"><span class="toc-number">3.5.</span> <span class="toc-text">打印对局情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化游戏"><span class="toc-number">3.6.</span> <span class="toc-text">初始化游戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完整代码"><span class="toc-number">3.7.</span> <span class="toc-text">完整代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目运行"><span class="toc-number">3.8.</span> <span class="toc-text">项目运行</span></a></li></ol></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/images/avatar.jpg" alt="avatar"><p class="sidebar-author-motto">你今天吃早餐了吗？</p></div><div class="sidebar-social"><span class="sidebar-social-item"><a href="https://github.com/liangwj45" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="fa fa-github"></i></a></span><span class="sidebar-social-item"><a href="liangwj45@mail2.syu.edu.cn" target="_blank" rel="noopener" data-popover="Email" data-popover-pos="up"><i class="fa fa-envelope-o"></i></a></span><span class="sidebar-social-item"><a href="290095633" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><i class="fa fa-qq"></i></a></span></div><div class="sidebar-state"><span class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">3</div><div class="sidebar-state-item-name">归档</div></a></span><span class="sidebar-state-item sidebar-state-categories"><a href="/categories/"><div class="sidebar-state-item-count">0</div><div class="sidebar-state-item-name">分类</div></a></span><span class="sidebar-state-item sidebar-state-tags"><a href="/tags/"><div class="sidebar-state-item-count">9</div><div class="sidebar-state-item-name">标签</div></a></span></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>你已阅读了</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><header class="post-header"><h1 class="post-title">Unity3D精简版双人井字棋</h1><div class="post-meta"><span class="post-create"><i class="fa fa-calendar-o"></i><span>发表于 </span><span>2019-09-11</span></span></div></header><div class="post-body"><h2 id="项目目标"><a href="#项目目标" class="headerlink" title="项目目标"></a>项目目标</h2><ul>
+<li>熟悉Unity3D软件的界面和操作等基本使用；</li>
+<li>使用Unity3D IMGUI编写一款简单的井字棋游戏；</li>
+<li>游戏界面构想：一个3*3的棋盘，一个重新开始的按钮以及显示游戏状态的文本框。</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="游戏界面"><a href="#游戏界面" class="headerlink" title="游戏界面"></a>游戏界面</h2><p><img src="https://github.com/liangwj45/Unity-3D/raw/master/HW2/img/game.png" alt></p>
+<h2 id="游戏思路"><a href="#游戏思路" class="headerlink" title="游戏思路"></a>游戏思路</h2><h3 id="创建棋盘"><a href="#创建棋盘" class="headerlink" title="创建棋盘"></a>创建棋盘</h3><ul>
+<li><p>定义一个3*3的二维数组用来存储棋盘中棋子的信息</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private int[,] map = new int[3, 3]; // 记录棋子信息</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>在OnGUI()方法中通过两层for循环创建出棋盘的9个按钮</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; 3; ++i) &#123;</span><br><span class="line">    for (int j = 0; j &lt; 3; ++j) &#123;</span><br><span class="line">        if (GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;&quot;)) &#123;</span><br><span class="line">           ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+</li>
+</ul>
+<h3 id="创建重置按钮"><a href="#创建重置按钮" class="headerlink" title="创建重置按钮"></a>创建重置按钮</h3><ul>
+<li><p>重置后会调用Start()方法</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if (GUI.Button(new Rect(900, 650, 100, 60), &quot;Reset&quot;)) Start();</span><br></pre></td></tr></table></div></figure>
+
+</li>
+</ul>
+<h3 id="记录下子情况"><a href="#记录下子情况" class="headerlink" title="记录下子情况"></a>记录下子情况</h3><ul>
+<li><p>定义一个turn变量用来记录到哪个玩家下子，另外用一个count变量来计数</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public int turn = 1, count = 0;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>用户点击棋盘时记录棋子</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;&quot;)) &#123;</span><br><span class="line">    ...</span><br><span class="line">    map[i, j] = turn; turn = -turn;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>用户点击棋盘后更新棋盘</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;&quot;)) &#123;</span><br><span class="line">    if (map[i, j] == 1) GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;O&quot;, style: style);</span><br><span class="line">    else if (map[i, j] == -1) GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;X&quot;, style: style);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>定义字体风格</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GUIStyle style = new GUIStyle();</span><br><span class="line">style.fontSize = 30;</span><br><span class="line">style.alignment = TextAnchor.MiddleCenter;</span><br><span class="line">style.fontStyle = FontStyle.BoldAndItalic;</span><br><span class="line">style.normal.textColor = Color.red;</span><br></pre></td></tr></table></div></figure>
+
+</li>
+</ul>
+<h3 id="判断胜负情况"><a href="#判断胜负情况" class="headerlink" title="判断胜负情况"></a>判断胜负情况</h3><ul>
+<li><p>使用一个3*3的二维数组计数下子情况：</p>
+<ul>
+<li>check[0][]：行计数</li>
+<li>check[1][]：列计数</li>
+<li>check[2][0]：左上到右下的对角线计数</li>
+<li>check[2][0]：右上到左下的对角线计数</li>
+</ul>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private int[,] check = new int[3, 3]; // 记录胜负情况</span><br></pre></td></tr></table></div></figure>
+</li>
+<li><p>每次下子后对应的计数器加上turn的值（turn的值为+1/-1交替出现），当某个计数器的绝对值等于3时，则表明某个玩家胜利，如果count计数器值等于9时表示平局，用一个win变量记录对局情况。</p>
+<figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">for (int i = 0; i &lt; 3; ++i) &#123;</span><br><span class="line">            for (int j = 0; j &lt; 3; ++j) &#123;</span><br><span class="line">                if (map[i, j] == 1) GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;O&quot;, style: style);</span><br><span class="line">                else if (map[i, j] == -1) GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;X&quot;, style: style);</span><br><span class="line">                if (GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;&quot;)) &#123;</span><br><span class="line">                    if (win &gt; 0) return;</span><br><span class="line">                    if (System.Math.Abs((check[0, i] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (System.Math.Abs((check[1, j] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (i == j &amp;&amp; System.Math.Abs((check[2, 0] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (i + j == 2 &amp;&amp; System.Math.Abs((check[2, 1] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (win == 0 &amp;&amp; ++count == 9) win = 3;</span><br><span class="line">                    map[i, j] = turn; turn = -turn;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></div></figure>
+
+</li>
+</ul>
+<h3 id="打印对局情况"><a href="#打印对局情况" class="headerlink" title="打印对局情况"></a>打印对局情况</h3><figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (win == 1) GUI.Label(new Rect(900, 180, 100, 100), &quot;Player1 WIN&quot;, style);</span><br><span class="line">else if (win == 2) GUI.Label(new Rect(900, 180, 100, 100), &quot;Player2 WIN&quot;, style);</span><br><span class="line">else if (win == 3) GUI.Label(new Rect(900, 180, 100, 100), &quot;TIE&quot;, style);</span><br></pre></td></tr></table></div></figure>
+
+<h3 id="初始化游戏"><a href="#初始化游戏" class="headerlink" title="初始化游戏"></a>初始化游戏</h3><figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void Start() &#123;</span><br><span class="line">    turn = 1; count = 0; win = 0;</span><br><span class="line">    for (int i = 0; i &lt; 3; ++i)</span><br><span class="line">        for (int j = 0; j &lt; 3; ++j) &#123;</span><br><span class="line">            check[i, j] = 0; map[i, j] = 0;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight plain"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class Main :MonoBehaviour &#123;</span><br><span class="line">    private int[,] check = new int[3, 3]; // 记录胜负情况</span><br><span class="line">    private int[,] map = new int[3, 3]; // 记录棋子信息</span><br><span class="line">    public int turn = 1, count = 0, win = 0;</span><br><span class="line"></span><br><span class="line">    void Start() &#123;</span><br><span class="line">        turn = 1; count = 0; win = 0;</span><br><span class="line">        for (int i = 0; i &lt; 3; ++i)</span><br><span class="line">            for (int j = 0; j &lt; 3; ++j) &#123;</span><br><span class="line">                check[i, j] = 0; map[i, j] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private void OnGUI() &#123;</span><br><span class="line">        if (GUI.Button(new Rect(900, 650, 100, 60), &quot;Reset&quot;)) Start();</span><br><span class="line"></span><br><span class="line">        GUIStyle style = new GUIStyle();</span><br><span class="line">        style.fontSize = 30;</span><br><span class="line">        style.alignment = TextAnchor.MiddleCenter;</span><br><span class="line">        style.fontStyle = FontStyle.BoldAndItalic;</span><br><span class="line">        style.normal.textColor = Color.red;</span><br><span class="line"></span><br><span class="line">        if (win == 1) GUI.Label(new Rect(900, 180, 100, 100), &quot;Player1 WIN&quot;, style);</span><br><span class="line">        else if (win == 2) GUI.Label(new Rect(900, 180, 100, 100), &quot;Player2 WIN&quot;, style);</span><br><span class="line">        else if (win == 3) GUI.Label(new Rect(900, 180, 100, 100), &quot;TIE&quot;, style);</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; 3; ++i) &#123;</span><br><span class="line">            for (int j = 0; j &lt; 3; ++j) &#123;</span><br><span class="line">                if (map[i, j] == 1) GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;O&quot;, style: style);</span><br><span class="line">                else if (map[i, j] == -1) GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;X&quot;, style: style);</span><br><span class="line">                if (GUI.Button(new Rect(i * 100 + 800, j * 100 + 300, 100, 100), &quot;&quot;)) &#123;</span><br><span class="line">                    if (win &gt; 0) return;</span><br><span class="line">                    if (System.Math.Abs((check[0, i] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (System.Math.Abs((check[1, j] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (i == j &amp;&amp; System.Math.Abs((check[2, 0] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (i + j == 2 &amp;&amp; System.Math.Abs((check[2, 1] += turn)) == 3) win = turn &gt; 0 ? 1 : 2;</span><br><span class="line">                    if (win == 0 &amp;&amp; ++count == 9) win = 3;</span><br><span class="line">                    map[i, j] = turn; turn = -turn;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+
+<h3 id="项目运行"><a href="#项目运行" class="headerlink" title="项目运行"></a>项目运行</h3><p>只需在项目中建立一个场景并创建一个空对象，将以上C#脚本绑定到该对象中即可，编译运行。</p>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>本文结束，感谢您的阅读</span><span>------</span></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="/liangwj45.github.io/tags/Unity3D/" title="Unity3D">Unity3D</a></span><span><a href="/liangwj45.github.io/tags/游戏编程/" title="游戏编程">游戏编程</a></span><span><a href="/liangwj45.github.io/tags/井字棋/" title="井字棋">井字棋</a></span><span><a href="/liangwj45.github.io/tags/Unity3D-GUI/" title="Unity3D GUI">Unity3D GUI</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-next pull-right"><a href="/2019/09/06/Ex1：图像读取和显示以及像素操作/"><span class="title">Ex1：图像读取和显示以及像素操作</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div><div class="clearfix"></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span> </span><span>Wenjie Liang.</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="回到顶部" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('load', function () {
+  var pjax = new Pjax({"elements":["a:not([target=_blank])"],"selectors":["head title","meta[name=description]","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+  // 是否第一次加载 pjax
+  var isFirstLoad = true;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    isFirstLoad = false;
+
+    $('html').velocity('scroll', {
+      duration: 500,
+      offset: $('#header').height(),
+      easing: 'easeInOutCubic'
+    });
+
+    var loadingBarWidth = 0;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar .progress').css('transform', 'translateX(-100%)');
+    $('.loading-bar').addClass('loading');
+
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 2;
+
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+
+      $('.loading-bar .progress').css(
+        'transform', 'translateX(' + (loadingBarWidth - 100) + '%)'
+      );
+    }, 100);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar .progress').css('transform', 'translateX(0%)');
+    setTimeout(function () {
+      $('.loading-bar').removeClass('loading');
+      $('.loading-bar .progress').css('transform', 'translateX(-100%)');
+    }, 400);
+
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    Stun.utils.pjaxReloadBoot();
+    Stun.utils.pjaxReloadScroll();
+    Stun.utils.pjaxReloadSidebar();
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="/js/utils.js?v=1.3.1"></script><script src="/js/stun-boot.js?v=1.3.1"></script><script src="/js/scroll.js?v=1.3.1"></script><script src="/js/header.js?v=1.3.1"></script><script src="/js/sidebar.js?v=1.3.1"></script></body></html>
