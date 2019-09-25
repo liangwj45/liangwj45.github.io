@@ -1,0 +1,129 @@
+<!DOCTYPE html><html lang="zn"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Wenjie Liang, 奥小文的加油站"><meta name="author" content="Wenjie Liang"><meta name="description" content="搭建一个简单的云桌面服务"><meta name="copyright" content="Wenjie Liang"><title>搭建一个简单的云桌面服务 | 奥小文的加油站</title><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/avatar.jpg?v=1.3.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/avatar.jpg?v=1.3.1" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.3.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  sidebar: {"offsetTop":"20px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"Copy Success","copy_error":"Copy Error","creative_commons":"Creative Commons","copy_button":"Click to Copy"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header"><div class="loading-bar"><div class="progress"></div></div><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><div class="menu-item"><a class="menu-item-inner" href="/"><i class="fa fa-home"></i>Home</a></div><div class="menu-item"><a class="menu-item-inner" href="/archives/"><i class="fa fa-folder-open"></i>Archives</a></div><div class="menu-item"><a class="menu-item-inner" href="/categories/"><i class="fa fa-th"></i>Categories</a></div><div class="menu-item"><a class="menu-item-inner" href="/tags/"><i class="fa fa-tags"></i>Tags</a></div><div class="menu-item"><a class="menu-item-inner" href="/about/"><i class="fa fa-user"></i>About</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">奥小文的加油站</div><div class="header-info-subtitle"></div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-overview">Overview</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验目的"><span class="toc-number">1.</span> <span class="toc-text"> 实验目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验环境和要求"><span class="toc-number">2.</span> <span class="toc-text"> 实验环境和要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实验过程"><span class="toc-number">3.</span> <span class="toc-text"> 实验过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装虚拟机"><span class="toc-number">3.1.</span> <span class="toc-text"> &lt;1&gt; 安装虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-安装-ssh"><span class="toc-number">3.2.</span> <span class="toc-text"> &lt;2&gt; 安装 ssh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-ssh-登录验证"><span class="toc-number">3.3.</span> <span class="toc-text"> &lt;3&gt; SSH 登录验证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-安装远程云桌面"><span class="toc-number">3.4.</span> <span class="toc-text"> &lt;4&gt; 安装远程云桌面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-服务批量化"><span class="toc-number">3.5.</span> <span class="toc-text"> &lt;5&gt; 服务批量化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#心得体会"><span class="toc-number">4.</span> <span class="toc-text"> 心得体会</span></a></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/images/avatar.jpg" alt="avatar"><p class="sidebar-author-motto">你今天吃早餐了吗？</p></div><div class="sidebar-social"><span class="sidebar-social-item"><a href="https://github.com/liangwj45" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="fa fa-github"></i></a></span><span class="sidebar-social-item"><a href="liangwj45@mail2.syu.edu.cn" target="_blank" rel="noopener" data-popover="Email" data-popover-pos="up"><i class="fa fa-envelope-o"></i></a></span><span class="sidebar-social-item"><a href="290095633" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><i class="fa fa-qq"></i></a></span></div><div class="sidebar-state"><span class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">8</div><div class="sidebar-state-item-name">Archives</div></a></span><span class="sidebar-state-item sidebar-state-categories"><a href="/categories/"><div class="sidebar-state-item-count">0</div><div class="sidebar-state-item-name">Categories</div></a></span><span class="sidebar-state-item sidebar-state-tags"><a href="/tags/"><div class="sidebar-state-item-count">12</div><div class="sidebar-state-item-name">Tags</div></a></span></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>You have read</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><header class="post-header"><h1 class="post-title">搭建一个简单的云桌面服务</h1><div class="post-meta"><span class="post-create"><i class="fa fa-calendar-o"></i><span>Posted </span><span>2019-09-25</span></span></div></header><div class="post-body"><p>基本上大一大二每个学期都会有期末上机考试的课程，为了方便统一考试环境的配置，常在云桌面配置的环境下进行考试。其实，云桌面也就跟 Windows 自带的远程桌面连接没有多大区别，唯一不同的就是一般我们使用远程桌面连接的主机是一个 PC 机，而云桌面一般是虚拟机。那么，在这次实验中，我们来尝试自己搭建一个简单的云桌面服务。</p>
+<a id="more"></a>
+<h2 id="实验目的"><a class="markdownIt-Anchor" href="#实验目的"></a> 实验目的</h2>
+<ol>
+<li>初步了解虚拟化技术，理解云计算的相关概念。</li>
+<li>理解系统工程师面临的困境。</li>
+<li>理解自动化安装、管理（DevOps）在云应用中的重要性。</li>
+</ol>
+<h2 id="实验环境和要求"><a class="markdownIt-Anchor" href="#实验环境和要求"></a> 实验环境和要求</h2>
+<ul>
+<li>虚拟机操作系统 Ubuntu19.04，能使用 NAT 访问外网。</li>
+<li>用户通过互联网，使用微软远程桌面，远程访问我在 PC 机上创建的虚拟机。</li>
+</ul>
+<h2 id="实验过程"><a class="markdownIt-Anchor" href="#实验过程"></a> 实验过程</h2>
+<h3 id="1-安装虚拟机"><a class="markdownIt-Anchor" href="#1-安装虚拟机"></a> &lt;1&gt; 安装虚拟机</h3>
+<ul>
+<li>
+<p>下载安装 VMware 软件（之前装有）</p>
+</li>
+<li>
+<p>下载<span class="external-link"><a href="https://ubuntu.com/download/desktop" target="_blank" rel="noopener">Ubuntu 镜像</a><i class="fa fa-external-link"></i></span></p>
+</li>
+<li>
+<p>安装 Ubuntu 虚拟机</p>
+</li>
+</ul>
+<p>在 VMware 软件中”新建虚拟机“，并给虚拟机分配了 30G 的磁盘和 2G 内存，网卡选择 NAT 模式其他配置保持默认。安装虚拟机时给操作系统创建一个账号用户名为 ubuntu，密码为 liang。</p>
+<p><img src="/img/ServiceComputing/Desktop/install.jpg" alt></p>
+<h3 id="2-安装-ssh"><a class="markdownIt-Anchor" href="#2-安装-ssh"></a> &lt;2&gt; 安装 ssh</h3>
+<p>安装软件前可以先更改系统的镜像源，这样在下载资源的时候会更快一些。</p>
+<p>先执行 <code>sudo vi /etc/apt/sources.list</code>，然后将文件的内容替换成以下内容</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.aliyun.com/ubuntu/ disco main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ disco main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ disco-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ disco-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ disco-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ disco-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ disco-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ disco-backports main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ disco-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ disco-proposed main restricted universe multiverse</span><br></pre></td></tr></table></div></figure>
+<p>然后再执行 <code>sudo apt update</code> 即可，最后再执行以下指令安装 ssh：</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install -y openssh-server</span><br></pre></td></tr></table></div></figure>
+<h3 id="3-ssh-登录验证"><a class="markdownIt-Anchor" href="#3-ssh-登录验证"></a> &lt;3&gt; SSH 登录验证</h3>
+<p>先查看虚拟机的 ip 地址：</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 由于需要使用ifconfig工具，故先安装net-tools</span></span><br><span class="line">sudo apt install -y net-tools</span><br><span class="line"><span class="comment"># 然后执行ifconfig指令查看虚拟机的ip地址</span></span><br><span class="line">ifconfig</span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Desktop/ip.jpg" alt></p>
+<p>然后在 PC 上使用 powershell 尝试用 ssh 登录虚拟机。结果成功使用 ubuntu 账号登录虚拟机。</p>
+<p><img src="/img/ServiceComputing/Desktop/ssh.jpg" alt></p>
+<h3 id="4-安装远程云桌面"><a class="markdownIt-Anchor" href="#4-安装远程云桌面"></a> &lt;4&gt; 安装远程云桌面</h3>
+<p>执行以下指令安装一些必要的软件包：</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装xrdp</span></span><br><span class="line">sudo apt-get install xrdp</span><br><span class="line"><span class="comment"># 安装vnc4server</span></span><br><span class="line">sudo apt-get install vnc4server tightvncserver</span><br><span class="line"><span class="comment"># 安装xubuntu-desktop</span></span><br><span class="line">sudo apt-get install xubuntu-desktop</span><br><span class="line"><span class="comment"># 安装xfce4</span></span><br><span class="line">sudo apt-get install xfce4</span><br><span class="line"><span class="comment"># 向xsession中写入xfce4-session</span></span><br><span class="line"><span class="built_in">echo</span> “xfce4-session” &gt;~/.xsession</span><br><span class="line"><span class="comment"># 开启xrdp服务</span></span><br><span class="line">sudo service xrdp restart</span><br></pre></td></tr></table></div></figure>
+<p>安装完成后尝试使用 PC 的远程桌面软件进行登录发现一直显示蓝屏，需要执行以下指令，然后重启计算机。</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.c-nergy.be/downloads/install-xrdp-3.0.zip</span><br><span class="line">unzip install-xrdp-3.0.zip</span><br><span class="line">chmod 777 Install-xrdp-3.0.sh</span><br><span class="line">./Install-xrdp-3.0.sh</span><br><span class="line">sudo reboot</span><br><span class="line">-----------------------------</span><br><span class="line">参考：https://blog.csdn.net/cxn304/article/details/99733711</span><br></pre></td></tr></table></div></figure>
+<p>重启后再次尝试 PC 的远程桌面软件进行登录发现还是有问题，这次连接后直接闪退了，解决方法如下：</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/xrdp/startwm.sh</span><br><span class="line"><span class="comment"># 在文件中添加</span></span><br><span class="line">xfce4-session</span><br><span class="line"><span class="comment"># 最后重启xrdp服务</span></span><br><span class="line">sudo service xrdp restart</span><br></pre></td></tr></table></div></figure>
+<p>最后成功使用 PC 远程登录 ubuntu 的虚拟机了。</p>
+<p><img src="/img/ServiceComputing/Desktop/desktop.jpg" alt></p>
+<h3 id="5-服务批量化"><a class="markdownIt-Anchor" href="#5-服务批量化"></a> &lt;5&gt; 服务批量化</h3>
+<p>如果需要生成大量实例，可以使用 VMware 中的“克隆”功能对虚拟机进行复制，即能够快速地对虚拟机进行批量生产。</p>
+<h2 id="心得体会"><a class="markdownIt-Anchor" href="#心得体会"></a> 心得体会</h2>
+<p>一开始打算使用 CentOS 7 进行实验时遇到了一个困难：CentOS 7 中 xrdp 软件依赖的 SELinux-policy 的版本高于 CentOS 7 所支持的最高版本，这似乎有点不太合常理，由于新版本的 SELinux-policy 依赖了更多的包，几乎无法手动一一安装（其实是懒），最终没有办法解决只能放弃了。</p>
+<p>相比之下 Ubuntu 系统似乎更为友好，并且自己也相对比较熟悉该系统，因此更换系统后实验就更顺利了一些，以后如果有相关的实验可能都会优先考虑 Ubuntu 系统了。</p>
+<p>整个实验下来，自己对虚拟化以及云相关的概念会更熟悉了一些，另外也接触了一下除 Ubuntu 之外的 Linux 系统——CentOS，收获也挺大的。</p>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>End of text, thank you for reading</span><span>------</span></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="/liangwj45.github.io/tags/服务计算/" title="服务计算">服务计算</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-prev pull-left"><a href="/2019/09/25/安装 Go 开发环境/"><i class="fa fa-chevron-left"></i><span class="title">安装 Go 开发环境</span></a></div><div class="article-next pull-right"><a href="/2019/09/22/Unity3D制作牧师与魔鬼游戏/"><span class="title">Unity3D制作牧师与魔鬼游戏</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div><div class="clearfix"></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span> </span><span>Wenjie Liang.</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="Back to top" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('load', function () {
+  var pjax = new Pjax({"elements":["a:not([target=_blank])"],"selectors":["head title","meta[name=description]","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+  // 是否第一次加载 pjax
+  var isFirstLoad = true;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    isFirstLoad = false;
+
+    $('html').velocity('scroll', {
+      duration: 500,
+      offset: $('#header').height(),
+      easing: 'easeInOutCubic'
+    });
+
+    var loadingBarWidth = 0;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar .progress').css('transform', 'translateX(-100%)');
+    $('.loading-bar').addClass('loading');
+
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 2;
+
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+
+      $('.loading-bar .progress').css(
+        'transform', 'translateX(' + (loadingBarWidth - 100) + '%)'
+      );
+    }, 100);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar .progress').css('transform', 'translateX(0%)');
+    setTimeout(function () {
+      $('.loading-bar').removeClass('loading');
+      $('.loading-bar .progress').css('transform', 'translateX(-100%)');
+    }, 400);
+
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    Stun.utils.pjaxReloadBoot();
+    Stun.utils.pjaxReloadScroll();
+    Stun.utils.pjaxReloadSidebar();
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="/js/utils.js?v=1.3.1"></script><script src="/js/stun-boot.js?v=1.3.1"></script><script src="/js/scroll.js?v=1.3.1"></script><script src="/js/header.js?v=1.3.1"></script><script src="/js/sidebar.js?v=1.3.1"></script></body></html>

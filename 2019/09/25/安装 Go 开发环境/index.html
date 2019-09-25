@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="zn"><head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="keywords" content="Wenjie Liang, 奥小文的加油站"><meta name="author" content="Wenjie Liang"><meta name="description" content="安装 Go 开发环境"><meta name="copyright" content="Wenjie Liang"><title>安装 Go 开发环境 | 奥小文的加油站</title><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/avatar.jpg?v=1.3.1" type="image/png" sizes="16x16"><link rel="icon" href="/images/avatar.jpg?v=1.3.1" type="image/png" sizes="32x32"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=1.3.1"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  sidebar: {"offsetTop":"20px","renderTocDepth":4},
+  back2top: {"enable":true},
+  reward: false,
+  fancybox: false,
+  zoom_image: {"enable":true,"mask_color":"rgba(0,0,0,0.6)"},
+  gallery_waterfall: undefined,
+  lazyload: undefined,
+  external_link: {"icon":{"enable":true,"name":"external-link"}},
+  shortcuts: {"switch_post":false},
+  prompt: {"copy_success":"Copy Success","copy_error":"Copy Error","creative_commons":"Creative Commons","copy_button":"Click to Copy"}
+};
+
+window.CONFIG = CONFIG;</script></head><body><div id="container"><header id="header"><div class="loading-bar"><div class="progress"></div></div><nav class="header-nav"><div class="header-nav-inner"><div class="fa fa-bars header-nav-menu-icon"></div><div class="header-nav-menu"><div class="menu-item"><a class="menu-item-inner" href="/"><i class="fa fa-home"></i>Home</a></div><div class="menu-item"><a class="menu-item-inner" href="/archives/"><i class="fa fa-folder-open"></i>Archives</a></div><div class="menu-item"><a class="menu-item-inner" href="/categories/"><i class="fa fa-th"></i>Categories</a></div><div class="menu-item"><a class="menu-item-inner" href="/tags/"><i class="fa fa-tags"></i>Tags</a></div><div class="menu-item"><a class="menu-item-inner" href="/about/"><i class="fa fa-user"></i>About</a></div></div></div></nav><div class="header-info"><div class="header-info-inner"><div class="header-info-title">奥小文的加油站</div><div class="header-info-subtitle"></div></div></div></header><main id="main"><div class="main-inner"><aside id="sidebar"><div class="sidebar-inner"><div class="sidebar-nav"><span class="sidebar-nav-toc current">Catalog</span><span class="sidebar-nav-overview">Overview</span></div><section class="sidebar-toc"><div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#实验环境"><span class="toc-number">1.</span> <span class="toc-text"> 实验环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-gvm"><span class="toc-number">2.</span> <span class="toc-text"> 安装 gvm</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-go"><span class="toc-number">3.</span> <span class="toc-text"> 安装 Go</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-git"><span class="toc-number">4.</span> <span class="toc-text"> 安装 Git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装-vscode"><span class="toc-number">5.</span> <span class="toc-text"> 安装 VSCode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写-go-的第一个程序"><span class="toc-number">6.</span> <span class="toc-text"> 编写 Go 的第一个程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编写-go-的第一个库"><span class="toc-number">7.</span> <span class="toc-text"> 编写 Go 的第一个库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为你的库编写测试"><span class="toc-number">8.</span> <span class="toc-text"> 为你的库编写测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将你的库发布到开源网站上"><span class="toc-number">9.</span> <span class="toc-text"> 将你的库发布到开源网站上</span></a></li></ol></div></section><section class="hide sidebar-overview"><div class="sidebar-author"><img class="sidebar-author-avatar" src="/images/avatar.jpg" alt="avatar"><p class="sidebar-author-motto">你今天吃早餐了吗？</p></div><div class="sidebar-social"><span class="sidebar-social-item"><a href="https://github.com/liangwj45" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><i class="fa fa-github"></i></a></span><span class="sidebar-social-item"><a href="liangwj45@mail2.syu.edu.cn" target="_blank" rel="noopener" data-popover="Email" data-popover-pos="up"><i class="fa fa-envelope-o"></i></a></span><span class="sidebar-social-item"><a href="290095633" target="_blank" rel="noopener" data-popover="QQ" data-popover-pos="up"><i class="fa fa-qq"></i></a></span></div><div class="sidebar-state"><span class="sidebar-state-item sidebar-state-posts"><a href="/archives/"><div class="sidebar-state-item-count">8</div><div class="sidebar-state-item-name">Archives</div></a></span><span class="sidebar-state-item sidebar-state-categories"><a href="/categories/"><div class="sidebar-state-item-count">0</div><div class="sidebar-state-item-name">Categories</div></a></span><span class="sidebar-state-item sidebar-state-tags"><a href="/tags/"><div class="sidebar-state-item-count">12</div><div class="sidebar-state-item-name">Tags</div></a></span></div></section><div class="sidebar-progress"><div class="sidebar-progress-read"><span>You have read</span><span class="sidebar-progress-number"></span></div><div class="sidebar-progress-line"></div></div></div></aside><div class="content headings code-highlight"><header class="post-header"><h1 class="post-title">安装 Go 开发环境</h1><div class="post-meta"><span class="post-create"><i class="fa fa-calendar-o"></i><span>Posted </span><span>2019-09-25</span></span></div></header><div class="post-body"><p>在 Ubuntu 系统下，也许你使用 sudo apt install golang-go 简单一行指令就能将 Go 安装到本地了。但在实际开发中，可能会遇到 Go 版本的问题，gvm 是 Go 的一个多版本管理工具，可以通过一些简单的指令随意切换本地使用的 Go 版本。另外配合 VSCode 和 Git 一同“服用”，将会有十分舒适的开发体验。</p>
+<a id="more"></a>
+<h2 id="实验环境"><a class="markdownIt-Anchor" href="#实验环境"></a> 实验环境</h2>
+<ul>
+<li>Ubuntu18.04</li>
+<li>gvm</li>
+<li>VSCode</li>
+<li>Git</li>
+</ul>
+<h2 id="安装-gvm"><a class="markdownIt-Anchor" href="#安装-gvm"></a> 安装 gvm</h2>
+<p>gvm 的安装也非常简单，只需在中断下执行一行简单的指令：</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 gvm</span></span><br><span class="line">bash &lt; &lt;(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)</span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Golang/gvm.png" alt></p>
+<p>然后执行 <code>gvm version</code> 即可查看当前安装的 gvm 的版本。</p>
+<p><img src="/img/ServiceComputing/Golang/version.png" alt></p>
+<h2 id="安装-go"><a class="markdownIt-Anchor" href="#安装-go"></a> 安装 Go</h2>
+<p>由于 Go 1.5 使用了自举（用 Go 写 Go），所以如果在系统环境完全没有 Go 命令的情况下，使用 <code>gvm install goxx</code> 会报错。可以先安装一个低版本的 Go1.4 ，然后再安装其他更新的版本。但如果连 Go1.4 也无法成功安装，那么最简单的做法就是先使用 <code>sudo apt install golang-go</code> 将 Go 安装到本地。</p>
+<blockquote>
+<p>当然如果安装 Go 过程中遇到了网络问题，则需要开代理或者添加其他非官方源。</p>
+</blockquote>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Go1.4</span></span><br><span class="line">gvm install go1.4</span><br><span class="line"><span class="comment"># 使用 Go1.4 作为构建环境</span></span><br><span class="line">gvm use go1.4</span><br><span class="line"><span class="comment"># 设置自举环境变量</span></span><br><span class="line"><span class="built_in">export</span> GOROOT_BOOTSTRAP=<span class="variable">$GOROOT</span></span><br><span class="line"><span class="comment"># 安装 Go 其他版本</span></span><br><span class="line">gvm install go1.13</span><br></pre></td></tr></table></div></figure>
+<h2 id="安装-git"><a class="markdownIt-Anchor" href="#安装-git"></a> 安装 Git</h2>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Git</span></span><br><span class="line">sudo apt install -y git</span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Golang/gitinstall.png" alt></p>
+<h2 id="安装-vscode"><a class="markdownIt-Anchor" href="#安装-vscode"></a> 安装 VSCode</h2>
+<p>在图形界面中安装则在浏览器打开<span class="external-link"><a href="https://code.visualstudio.com/Download" target="_blank" rel="noopener">官网</a><i class="fa fa-external-link"></i></span>，然后下载 VSCode 的 <code>.deb</code> 版本，下载完直接双击打开安装即可。</p>
+<p>安装完 VSCode 最好安装 Go 相应的插件，在 Extensions 页面搜索 Go 关键字，即可找到以下插件并进行安装。</p>
+<p><img src="/img/ServiceComputing/Golang/vscode.png" alt></p>
+<h2 id="编写-go-的第一个程序"><a class="markdownIt-Anchor" href="#编写-go-的第一个程序"></a> 编写 Go 的第一个程序</h2>
+<ul>
+<li>打开终端，使用 gvm 配置 Go 环境。</li>
+</ul>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 Go1.13</span></span><br><span class="line">gvm use 1.13</span><br><span class="line"><span class="comment"># 查看 Go 版本</span></span><br><span class="line">go version</span><br><span class="line"><span class="comment"># 查看 Go 工作目录</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$GOPATH</span></span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Golang/path.png" alt></p>
+<ul>
+<li>在任意目录下创建一个 <code>hello</code> 目录，并使用 VSCode 打开该目录，并在该目录下创建 <code>main.go</code> 文件，文件内容为：</li>
+</ul>
+<figure class="highlight go"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Printf(<span class="string">"Hello, world!\n"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<ul>
+<li>打开终端并进入到该目录下，先为该目录（项目）创建模块，然后编译安装该模块并运行由此创建的程序。</li>
+</ul>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建模块</span></span><br><span class="line">go mod init github.com/liangwj45/hello</span><br><span class="line"><span class="comment"># 编译安装模块</span></span><br><span class="line">go install github.com/liangwj45/hello</span><br><span class="line"><span class="comment"># 运行程序</span></span><br><span class="line">hello</span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Golang/hello.png" alt></p>
+<h2 id="编写-go-的第一个库"><a class="markdownIt-Anchor" href="#编写-go-的第一个库"></a> 编写 Go 的第一个库</h2>
+<ul>
+<li>在刚才的项目中继续创建一个 <code>stringutil</code> 目录，作为包目录，并在该目录下创建 <code>reverse.go</code> 文件，内容如下：</li>
+</ul>
+<figure class="highlight go"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// stringutil 包含有用于处理字符串的工具函数。</span></span><br><span class="line"><span class="keyword">package</span> stringutil</span><br><span class="line"></span><br><span class="line"><span class="comment">// Reverse 将其实参字符串以符文为单位左右反转。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Reverse</span><span class="params">(s <span class="keyword">string</span>)</span> <span class="title">string</span></span> &#123;</span><br><span class="line">	r := []<span class="keyword">rune</span>(s)</span><br><span class="line">	<span class="keyword">for</span> i, j := <span class="number">0</span>, <span class="built_in">len</span>(r)<span class="number">-1</span>; i &lt; <span class="built_in">len</span>(r)/<span class="number">2</span>; i, j = i+<span class="number">1</span>, j<span class="number">-1</span> &#123;</span><br><span class="line">		r[i], r[j] = r[j], r[i]</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">string</span>(r)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<ul>
+<li>用 <code>go build</code> 指令来对该库进行编译：</li>
+</ul>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对库进行编译</span></span><br><span class="line">go build github.com/liangwj45/hello/stringutil</span><br></pre></td></tr></table></div></figure>
+<ul>
+<li>修改 <code>main.go</code> 的内容引用这个库，修改内容如下：</li>
+</ul>
+<figure class="highlight go"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/user/stringutil"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Printf(stringutil.Reverse(<span class="string">"!oG ,olleH"</span>))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<ul>
+<li>重新编译安装该模块，并运行由此生成的程序：</li>
+</ul>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译安装模块</span></span><br><span class="line">go install github.com/liangwj45/hello</span><br><span class="line"><span class="comment"># 运行程序</span></span><br><span class="line">hello</span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Golang/string.png" alt></p>
+<h2 id="为你的库编写测试"><a class="markdownIt-Anchor" href="#为你的库编写测试"></a> 为你的库编写测试</h2>
+<p>Go 拥有一个轻量级的测试框架，它由 <code>go test</code> 命令和 <code>testing</code> 包构成。</p>
+<p>你可以通过创建一个名字以 <code>_test.go</code> 结尾的，包含名为 <code>TestXXX</code> 且签名为 <code>func (t *testing.T)</code> 函数的文件来编写测试。 测试框架会运行每一个这样的函数；若该函数调用了像 <code>t.Error</code> 或 <code>t.Fail</code> 这样表示失败的函数，此测试即表示失败。</p>
+<p>在原来的 <code>stringutil</code> 目录下创建 <code>reverse_test.go</code> 文件来为 <code>stringutil</code> 添加测试，文件内容如下：</p>
+<figure class="highlight go"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> stringutil</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"testing"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestReverse</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	cases := []<span class="keyword">struct</span> &#123;</span><br><span class="line">		in, want <span class="keyword">string</span></span><br><span class="line">	&#125;&#123;</span><br><span class="line">		&#123;<span class="string">"Hello, world"</span>, <span class="string">"dlrow ,olleH"</span>&#125;,</span><br><span class="line">		&#123;<span class="string">"Hello, 世界"</span>, <span class="string">"界世 ,olleH"</span>&#125;,</span><br><span class="line">		&#123;<span class="string">""</span>, <span class="string">""</span>&#125;,</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, c := <span class="keyword">range</span> cases &#123;</span><br><span class="line">		got := Reverse(c.in)</span><br><span class="line">		<span class="keyword">if</span> got != c.want &#123;</span><br><span class="line">			t.Errorf(<span class="string">"Reverse(%q) == %q, want %q"</span>, c.in, got, c.want)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
+<ul>
+<li>使用 <code>go test</code> 进行测试：</li>
+</ul>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行测试</span></span><br><span class="line">go <span class="built_in">test</span> github.com/liangwj45/hello/stringutil</span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Golang/test.png" alt></p>
+<h2 id="将你的库发布到开源网站上"><a class="markdownIt-Anchor" href="#将你的库发布到开源网站上"></a> 将你的库发布到开源网站上</h2>
+<p>如果需要将你的代码分享给其他人，像 Git 这样的开源代码网站就很不错。</p>
+<p>你需要一个 Git 账号，然后登录 <span class="external-link"><a href="https://github.com/" target="_blank" rel="noopener">github</a><i class="fa fa-external-link"></i></span> 官网为 hello 项目创建一个仓库：</p>
+<p><img src="/img/ServiceComputing/Golang/repo.png" alt></p>
+<p>然后使用 git 指令将你的代码推送到远程仓库中：</p>
+<figure class="highlight bash"><div style="overflow: auto"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入项目的根目录</span></span><br><span class="line"><span class="built_in">cd</span> ~/code/hello/</span><br><span class="line"><span class="comment"># 初始化 git 仓库</span></span><br><span class="line">git init</span><br><span class="line"><span class="comment"># 绑定远程仓库</span></span><br><span class="line">git remote add origin git@github.com:liangwj45/hello.git</span><br><span class="line"><span class="comment"># 提交你的代码并推送到远程仓库</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">'first commit'</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></div></figure>
+<p><img src="/img/ServiceComputing/Golang/git.png" alt></p>
+<p>之后就可以在网站看到你的代码了。</p>
+<p><img src="/img/ServiceComputing/Golang/remote.png" alt></p>
+</div><footer class="post-footer"><div class="post-footer-end"><span>------</span><span>End of text, thank you for reading</span><span>------</span></div><div class="post-footer-tags"><i class="fa fa-tags icon"></i><span><a href="/liangwj45.github.io/tags/服务计算/" title="服务计算">服务计算</a></span></div><nav id="paginator"><div class="post-paginator"><div class="article-prev pull-left"><a href="/2019/09/25/Ex2：用 CImg 重写 Canny 代码/"><i class="fa fa-chevron-left"></i><span class="title">Ex2：用 CImg 重写 Canny 代码</span></a></div><div class="article-next pull-right"><a href="/2019/09/25/搭建一个简单的云桌面服务/"><span class="title">搭建一个简单的云桌面服务</span><i class="fa fa-chevron-right"></i></a></div></div></nav></footer></div><div class="clearfix"></div></div></main><footer id="footer"><div class="footer-inner"><div><span>&copy; 2019</span><span> </span><span>Wenjie Liang.</span></div></div></footer><div id="back-top"><div class="back-top-inner" data-popover="Back to top" data-popover-pos="up"><i class="fa fa-rocket"></i></div></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@latest/pjax.min.js"></script><script>window.addEventListener('load', function () {
+  var pjax = new Pjax({"elements":["a:not([target=_blank])"],"selectors":["head title","meta[name=description]","#main",".pjax-reload"],"history":true,"scrollTo":false,"scrollRestoration":false,"cacheBust":false,"debug":false,"currentUrlFullReload":false,"timeout":0});
+  // 加载进度条的计时器
+  var loadingTimer = null;
+  // 是否第一次加载 pjax
+  var isFirstLoad = true;
+
+  // 重置页面 Y 方向上的滚动偏移量
+  document.addEventListener('pjax:send', function () {
+    isFirstLoad = false;
+
+    $('html').velocity('scroll', {
+      duration: 500,
+      offset: $('#header').height(),
+      easing: 'easeInOutCubic'
+    });
+
+    var loadingBarWidth = 0;
+    var MAX_LOADING_WIDTH = 95;
+
+    $('.loading-bar .progress').css('transform', 'translateX(-100%)');
+    $('.loading-bar').addClass('loading');
+
+    clearInterval(loadingTimer);
+    loadingTimer = setInterval(function () {
+      loadingBarWidth += 2;
+
+      if (loadingBarWidth > MAX_LOADING_WIDTH) {
+        loadingBarWidth = MAX_LOADING_WIDTH;
+      }
+
+      $('.loading-bar .progress').css(
+        'transform', 'translateX(' + (loadingBarWidth - 100) + '%)'
+      );
+    }, 100);
+  }, false);
+
+  window.addEventListener('pjax:complete', function () {
+    clearInterval(loadingTimer);
+    $('.loading-bar .progress').css('transform', 'translateX(0%)');
+    setTimeout(function () {
+      $('.loading-bar').removeClass('loading');
+      $('.loading-bar .progress').css('transform', 'translateX(-100%)');
+    }, 400);
+
+    $('link[rel=prefetch], script[data-pjax-rm]').each(function () {
+      $(this).remove();
+    });
+
+    $('script[data-pjax], #pjax-reload script').each(function () {
+      $(this).parent().append($(this).remove());
+    });
+
+    Stun.utils.pjaxReloadBoot();
+    Stun.utils.pjaxReloadScroll();
+    Stun.utils.pjaxReloadSidebar();
+  }, false);
+}, false);</script><div id="pjax-reload"></div><script src="/js/utils.js?v=1.3.1"></script><script src="/js/stun-boot.js?v=1.3.1"></script><script src="/js/scroll.js?v=1.3.1"></script><script src="/js/header.js?v=1.3.1"></script><script src="/js/sidebar.js?v=1.3.1"></script></body></html>
