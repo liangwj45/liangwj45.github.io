@@ -1,12 +1,12 @@
 $(document).ready(function () {
   var $menu = $('.header-nav-menu');
-  var $menuItem = $('.header-nav-menu .menu-item');
+  var $menuItem = $('.header-nav-menu-item');
 
   $(document).on('click', function () {
     $menu.removeClass('show');
   });
 
-  $('.header-nav-menu-icon').on('click', function (e) {
+  $('.header-nav-btn').on('click', function (e) {
     e.stopPropagation();
     $menu.toggleClass('show');
   });

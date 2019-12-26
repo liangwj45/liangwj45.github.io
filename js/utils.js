@@ -111,10 +111,11 @@ Stun.utils = Stun.$u = {
     };
 
     if (!$('.stun-alert')[0]) {
+      var faPrefix = CONFIG.fontawesome.prefix;
       var $alert = $(
         '<div class="stun-message">' +
           '<div class="stun-alert stun-alert-' + status + '">' +
-            '<i class="stun-alert-icon fa fa-' + icon[status] + '"></i>' +
+            '<i class="stun-alert-icon ' + faPrefix + ' fa-' + icon[status] + '"></i>' +
             '<span class="stun-alert-description">' + text + '</span>' +
           '</div>' +
         '</div>'
@@ -174,13 +175,6 @@ Stun.utils = Stun.$u = {
       return false;
     }
   },
-  initTocDisplay: function () {
-    if ($('.post-body').find('h1,h2,h3,h4,h5,h6')[0]) return;
-
-    $('.sidebar-nav').addClass('hide');
-    $('.sidebar-toc').addClass('hide');
-    $('.sidebar-overview').removeClass('hide');
-  },
   // Wrap images with fancybox support.
   wrapImageWithFancyBox: function () {
     $('.content img').not(':hidden').each(function () {
@@ -234,10 +228,11 @@ Stun.utils = Stun.$u = {
     var gConfig = CONFIG.gallery_waterfall;
     var colWidth = parseInt(gConfig.col_width);
     var colGapX = parseInt(gConfig.gap_x);
+    var GALLERY_IMG_SELECTOR = '.gallery__img';
 
-    this.waitAllImageLoad('.gallery img', function () {
+    this.waitAllImageLoad(GALLERY_IMG_SELECTOR, function () {
       $('.gallery').masonry({
-        itemSelector: '.gallery-image',
+        itemSelector: GALLERY_IMG_SELECTOR,
         columnWidth: colWidth,
         percentPosition: true,
         gutter: colGapX,
@@ -251,11 +246,14 @@ Stun.utils = Stun.$u = {
   },
   // Add a mark icon to the link with `target="_blank"` attribute.
   addIconToExternalLink: function (container) {
-    if (!$(container)[0]) return;
+    if (!$(container)[0]) {
+      return;
+    }
 
+    var faPrefix = CONFIG.fontawesome.prefix;
     var $wrapper = $('<span class="external-link"></span>');
     var $icon = $(
-      '<i class="fa fa-' +
+      '<i class="' + faPrefix + ' fa-' +
         CONFIG.external_link.icon.name +
       '"></i>'
     );
@@ -275,10 +273,10 @@ Stun.utils = Stun.$u = {
       var isNext = e.keyCode === _this.codeToKeyCode('ArrowRight');
 
       if (e.ctrlKey && isPrev) {
-        var prev = $('.article-prev').find('a')[0];
+        var prev = $('.paginator-post-prev').find('a')[0];
         prev && prev.click();
       } else if (e.ctrlKey && isNext) {
-        var next = $('.article-next').find('a')[0];
+        var next = $('.paginator-post-next').find('a')[0];
         next && next.click();
       }
     });
@@ -286,14 +284,14 @@ Stun.utils = Stun.$u = {
   // Show / Hide the reward QR.
   registerShowReward: function () {
     $('.reward-button').on('click', function () {
-      var $container = $('.reward-qr-wrapper');
+      var $container = $('.reward-qr');
 
       if ($container.is(':visible')) {
         $container.css('display', 'none');
       } else {
         $container
           .velocity('stop')
-          .velocity('transition.slideDownBigIn', {
+          .velocity('transition.slideDownIn', {
             duration: 300
           });
       }
@@ -301,7 +299,7 @@ Stun.utils = Stun.$u = {
   },
   // Click to zoom in image, without fancybox.
   registerClickToZoomImage: function () {
-    $('.content img').not(':hidden').each(function () {
+    $('#content-wrap img').not(':hidden').each(function () {
       $(this).addClass('zoom-image');
     });
 
@@ -371,7 +369,7 @@ Stun.utils = Stun.$u = {
       });
     }
   },
-  addCopyButtonToCopyright: function () {
+  addCopyButton: function () {
     $('figure.highlight').each(function () {
       if (!$(this).find('figcaption')[0]) {
         var CODEBLOCK_CLASS_NAME = 'highlight';
@@ -389,11 +387,12 @@ Stun.utils = Stun.$u = {
       }
     });
 
+    var faPrefix = CONFIG.fontawesome.prefix;
     var $copyIcon = $(
       '<div class="copy-button" data-popover=' +
         CONFIG.prompt.copy_button +
         ' data-popover-pos="up">' +
-        '<i class="fa fa-clipboard"></i>' +
+        '<i class="' + faPrefix + ' fa-clipboard"></i>' +
       '</div>'
     );
 
